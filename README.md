@@ -6,3 +6,14 @@ This project aims to create an AI-powered assistant that simplifies election pro
 
 🎯 Goal
 Build a modern, interactive AI-powered web application that helps citizens understand election processes, check eligibility, and stay updated with election timelines in a simple and engaging way.
+
+💡 Solution
+An interactive assistant that:
+
+Explains election steps in simple language
+
+Provides structured timelines
+
+Answers user queries conversationally
+
+Enhances civic awareness through accessibility
