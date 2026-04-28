@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Election Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="flex flex-col h-screen">
+
+        <!-- Header -->
+        <div class="bg-blue-600 text-white p-4 text-center text-xl font-bold">
+            Election Process Assistant
+        </div>
+
+        <!-- Chat Area -->
+        <div id="chat-box" class="flex-1 p-4 overflow-y-auto space-y-2">
+
+            <div class="bg-white p-2 rounded shadow w-fit">
+                Hello 👋 Ask me about elections!
+            </div>
+
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 bg-white flex gap-2">
+            <input id="user-input" type="text" placeholder="Type your question..."
+                class="flex-1 border rounded p-2 outline-none">
+
+            <button onclick="sendMessage()" class="bg-blue-600 text-white px-4 py-2 rounded">
+                Send
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        async function sendMessage() {
+            let input = document.getElementById("user-input");
+            let message = input.value;
+
+            if (message.trim() === "") return;
+
+            let chatBox = document.getElementById("chat-box");
+
+            // User message
+            let userMsg = document.createElement("div");
+            userMsg.className = "bg-blue-500 text-white p-2 rounded w-fit ml-auto";
+            userMsg.innerText = message;
+            chatBox.appendChild(userMsg);
+
+            input.value = "";
+
+            // Bot placeholder
+            let botMsg = document.createElement("div");
+            botMsg.className = "bg-white p-2 rounded shadow w-fit";
+            botMsg.innerText = "Thinking...";
+            chatBox.appendChild(botMsg);
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            try {
+                let response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+
+                let data = await response.json();
+
+                botMsg.innerText = data.response;
+
+            } catch (error) {
+                botMsg.innerText = "Server error.";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
