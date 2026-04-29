@@ -16,4 +16,4 @@ Provides structured timelines
 
 Answers user queries conversationally
 
-Enhances civic awareness through accessibility
+Enhances civic awareness through accessibility and availabilty.
