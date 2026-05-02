@@ -10,10 +10,10 @@ Build a modern, interactive AI-powered web application that helps citizens under
 💡 Solution
 An interactive assistant that:
 
-Explains election steps in simple language
+Explains election steps in simple language.
 
-Provides structured timelines
+Provides structured timelines.
 
-Answers user queries conversationally
+Answers user queries conversationally.
 
 Enhances civic awareness through accessibility and availabilty.
